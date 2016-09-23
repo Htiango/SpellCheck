@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		05C9DE2B1D93D3FC005E707E /* fileRead.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05C9DE2A1D93D3FC005E707E /* fileRead.cpp */; };
 		05D0A7421D924C8100E63881 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05D0A7411D924C8100E63881 /* main.cpp */; };
+		05D0A74A1D924CAC00E63881 /* levenDis.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05D0A7491D924CAC00E63881 /* levenDis.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -23,8 +25,15 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		05C9DE291D93D3EE005E707E /* fileRead.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fileRead.h; sourceTree = "<group>"; };
+		05C9DE2A1D93D3FC005E707E /* fileRead.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = fileRead.cpp; sourceTree = "<group>"; };
+		05C9DE2C1D93D740005E707E /* storycorrect.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = storycorrect.txt; sourceTree = "<group>"; };
+		05C9DE2D1D93D740005E707E /* story.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = story.txt; sourceTree = "<group>"; };
+		05C9DE2E1D93D740005E707E /* dict.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dict.txt; sourceTree = "<group>"; };
 		05D0A73E1D924C8100E63881 /* SpellCheck */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SpellCheck; sourceTree = BUILT_PRODUCTS_DIR; };
 		05D0A7411D924C8100E63881 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		05D0A7481D924C9900E63881 /* levenDis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = levenDis.h; sourceTree = "<group>"; };
+		05D0A7491D924CAC00E63881 /* levenDis.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = levenDis.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,7 +66,14 @@
 		05D0A7401D924C8100E63881 /* SpellCheck */ = {
 			isa = PBXGroup;
 			children = (
+				05C9DE2C1D93D740005E707E /* storycorrect.txt */,
+				05C9DE2D1D93D740005E707E /* story.txt */,
+				05C9DE2E1D93D740005E707E /* dict.txt */,
 				05D0A7411D924C8100E63881 /* main.cpp */,
+				05D0A7481D924C9900E63881 /* levenDis.h */,
+				05D0A7491D924CAC00E63881 /* levenDis.cpp */,
+				05C9DE291D93D3EE005E707E /* fileRead.h */,
+				05C9DE2A1D93D3FC005E707E /* fileRead.cpp */,
 			);
 			path = SpellCheck;
 			sourceTree = "<group>";
@@ -119,6 +135,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				05D0A7421D924C8100E63881 /* main.cpp in Sources */,
+				05D0A74A1D924CAC00E63881 /* levenDis.cpp in Sources */,
+				05C9DE2B1D93D3FC005E707E /* fileRead.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -239,6 +257,7 @@
 				05D0A7471D924C8100E63881 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
