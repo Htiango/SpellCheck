@@ -43,13 +43,17 @@ int main(int argc, const char * argv[]) {
 
     writeDis();
  
-//    printPath("onsensjadjdadajajdjd", "once", filePath, "printPath.txt");
+//    printPath("you", "youarethebest", filePath, "printPath.txt");
     
     return 0;
 }
 
 
 void writeDis(){
+    
+    unsigned int dis;
+    int wordDis, wordDisPre ;
+    
     readFile(filePath + pureStoryName, story);
     readFile(filePath + dictName, dict);
     readFile(filePath + pureStoryCorrectName, storyCorrect);
@@ -58,18 +62,36 @@ void writeDis(){
         //initialized to the biggest value of unsigned int
         distances[i] = UINT_MAX;
         //        cout << distances[i] << endl;
-        unsigned int dis;
+
         for (int j = 0; j < DICT_SIZE; j++) {
             string s = story.at(i);
             string d = dict.at(j);
-            //            if (abs((int)(s.length() - d.length())) <= EDIT_DIS) {
-            dis = levenshteinDis(s, d);
-            //                unsigned int dis = levenshtein_distance(s, d);   // brute force
+
+//            dis = levenshteinDis(s, d);         // edit distance
+//            dis = resursiveLevenshtein(s, d);   // brute force
+            dis = beamLevenshtein(s, d);        // beam search
+            
+//            if (distances[i] == dis) {
+//                wordDis = abs(int(s.size()) - int(d.size()));
+//                wordDisPre = abs(int(s.size()) - int(dict.at(distanceId[i]).size()));
+//                if (wordDis < wordDisPre) {
+//                    distances[i] = dis;
+//                    distanceId[i] = j;
+//                }
+//                else if(wordDis == wordDisPre){
+//                    if (s[0] == d[0]) {
+//                        distances[i] = dis;
+//                        distanceId[i] = j;
+//                    }
+//                }
+//            }
+            
             if (distances[i] > dis) {
                 distances[i] = dis;
                 distanceId[i] = j;
             }
-            //            }
+            
+            
         }
     }
     
