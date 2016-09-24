@@ -1,7 +1,7 @@
 #include "levenDis.h"
 
 
-// get the levenshteinDis
+// get the levenshteinDis (use absolute edit distance pruning)
 unsigned int levenshteinDis(const string str_input, const string str_tem){
 
     const size_t len_input = str_input.size(), len_tem = str_tem.size();
@@ -10,6 +10,7 @@ unsigned int levenshteinDis(const string str_input, const string str_tem){
     unsigned int temp_up = len_tem - 1;
     unsigned int temp_down = 0;
     
+    // initialize the max column
     for (unsigned int i = 0; i < len_tem + 1; i++) {
         colMax[i] = UINT_MAX / 2;
     }
@@ -35,12 +36,18 @@ unsigned int levenshteinDis(const string str_input, const string str_tem){
         }
         else{
             temp_down += 1;
+            if (temp_down > len_tem) {
+                temp_down = len_tem;
+            }
 //            col[temp_down] = min({prevCol[temp_down] + 1, prevCol[temp_down - 1] + (str_input[i - 1] == str_tem[temp_down - 1] ? 0 : 1)});
         }
             
         temp_up += 1;
         
-        
+        if (temp_down != 0) {
+            col[temp_down] = min({prevCol[temp_down] + 1, prevCol[temp_down - 1] + (str_input[i] == str_tem[temp_down - 1] ? 0 : 1)});
+        }
+//
         unsigned int temp_value = temp_up >= len_tem ? len_tem : temp_up ;
         
         // the loop should only go to the middle part and forget about the upper and down part
