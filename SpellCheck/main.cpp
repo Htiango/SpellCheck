@@ -43,7 +43,7 @@ int main(int argc, const char * argv[]) {
 
     writeDis();
  
-//    printPath("you", "youarethebest", filePath, "printPath.txt");
+//    printPath("himlays", "himalayas", filePath, "printPath.txt");
     
     return 0;
 }
@@ -53,6 +53,7 @@ void writeDis(){
     
     unsigned int dis;
     int wordDis, wordDisPre ;
+    string dPre;
     
     readFile(filePath + pureStoryName, story);
     readFile(filePath + dictName, dict);
@@ -71,20 +72,29 @@ void writeDis(){
 //            dis = resursiveLevenshtein(s, d);   // brute force
             dis = beamLevenshtein(s, d);        // beam search
             
-//            if (distances[i] == dis) {
-//                wordDis = abs(int(s.size()) - int(d.size()));
-//                wordDisPre = abs(int(s.size()) - int(dict.at(distanceId[i]).size()));
-//                if (wordDis < wordDisPre) {
+            if (distances[i] == dis) {
+                wordDis = abs(int(s.size()) - int(d.size()));
+                dPre = dict.at(distanceId[i]);
+                wordDisPre = abs(int(s.size()) - int(dPre.size()));
+                
+                if (s[0] == d[0]) {
+                    if (s[0] != dPre[0]) {
+                        distances[i] = dis;
+                        distanceId[i] = j;
+                    }
+                    else{
+                        if (s[1] == d[1]) {
+                            distances[i] = dis;
+                            distanceId[i] = j;
+                        }
+                    }
+                }
+                
+//                else if (wordDis == 0 && wordDisPre!= 0) {
 //                    distances[i] = dis;
 //                    distanceId[i] = j;
 //                }
-//                else if(wordDis == wordDisPre){
-//                    if (s[0] == d[0]) {
-//                        distances[i] = dis;
-//                        distanceId[i] = j;
-//                    }
-//                }
-//            }
+            }
             
             if (distances[i] > dis) {
                 distances[i] = dis;
