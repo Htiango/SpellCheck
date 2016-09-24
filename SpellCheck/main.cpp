@@ -8,6 +8,7 @@
 
 #include "levenDis.h"
 #include "fileRead.h"
+#include "printPath.h"
 
 using namespace std;
 
@@ -23,6 +24,7 @@ vector<string> story;
 vector<string> dict;
 vector<string> storyCorrect;
 
+void writeDis();
 
 //edit distance of input and dict word
 unsigned int distances[STORY_SIZE];
@@ -39,6 +41,15 @@ int main(int argc, const char * argv[]) {
 //    cout << result << endl;
 
 
+    writeDis();
+ 
+//    printPath("onsensjadjdadajajdjd", "once", filePath, "printPath.txt");
+    
+    return 0;
+}
+
+
+void writeDis(){
     readFile(filePath + pureStoryName, story);
     readFile(filePath + dictName, dict);
     readFile(filePath + pureStoryCorrectName, storyCorrect);
@@ -46,17 +57,19 @@ int main(int argc, const char * argv[]) {
     for (int i = 0; i < STORY_SIZE; i++) {
         //initialized to the biggest value of unsigned int
         distances[i] = UINT_MAX;
+        //        cout << distances[i] << endl;
+        unsigned int dis;
         for (int j = 0; j < DICT_SIZE; j++) {
             string s = story.at(i);
             string d = dict.at(j);
-//            if (abs((int)(s.length() - d.length())) <= EDIT_DIS) {
-                unsigned int dis = levenshteinDis(s, d);
-//                unsigned int dis = levenshtein_distance(s, d);
-                if (distances[i] > dis) {
-                    distances[i] = dis;
-                    distanceId[i] = j;
-                }
-//            }
+            //            if (abs((int)(s.length() - d.length())) <= EDIT_DIS) {
+            dis = levenshteinDis(s, d);
+            //                unsigned int dis = levenshtein_distance(s, d);   // brute force
+            if (distances[i] > dis) {
+                distances[i] = dis;
+                distanceId[i] = j;
+            }
+            //            }
         }
     }
     
@@ -87,7 +100,4 @@ int main(int argc, const char * argv[]) {
     }
     cout << "correct rate : " << (double)correctCount / STORY_SIZE << endl;
     storyResult.close();
- 
-    
-    return 0;
 }
