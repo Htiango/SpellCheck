@@ -6,12 +6,14 @@
 #include <vector>
 #include <string>
 #include <iomanip>
+//#include <Windows.h>
 
 using namespace std;
 
 //gap between characters when print path table
-#define TABLE_GAP (3)
+#define TABLE_GAP (5)
 
-void printPath(const string& s1, const string& s2, string filePath, string fileName);
+void printSinglePath(const string& s1, const string& s2, string filePath, string fileName);
+void print(string s1, string s2, ofstream& out);
 
 #endif
