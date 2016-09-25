@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		05BBB8271D9623EB00FDD972 /* printPath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05BBB8261D9623EB00FDD972 /* printPath.cpp */; };
+		05C126D91D97D409004E302C /* printPath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05C126D71D97D409004E302C /* printPath.cpp */; };
 		05C9DE2B1D93D3FC005E707E /* fileRead.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05C9DE2A1D93D3FC005E707E /* fileRead.cpp */; };
 		05D0A7421D924C8100E63881 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05D0A7411D924C8100E63881 /* main.cpp */; };
 		05D0A74A1D924CAC00E63881 /* levenDis.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05D0A7491D924CAC00E63881 /* levenDis.cpp */; };
@@ -26,8 +26,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		05BBB8251D9623CF00FDD972 /* printPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = printPath.h; sourceTree = "<group>"; };
-		05BBB8261D9623EB00FDD972 /* printPath.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = printPath.cpp; sourceTree = "<group>"; };
+		05C126D71D97D409004E302C /* printPath.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = printPath.cpp; sourceTree = "<group>"; };
+		05C126D81D97D409004E302C /* printPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = printPath.h; sourceTree = "<group>"; };
 		05C9DE291D93D3EE005E707E /* fileRead.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fileRead.h; sourceTree = "<group>"; };
 		05C9DE2A1D93D3FC005E707E /* fileRead.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = fileRead.cpp; sourceTree = "<group>"; };
 		05C9DE2C1D93D740005E707E /* storycorrect.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = storycorrect.txt; sourceTree = "<group>"; };
@@ -77,8 +77,8 @@
 				05D0A7491D924CAC00E63881 /* levenDis.cpp */,
 				05C9DE291D93D3EE005E707E /* fileRead.h */,
 				05C9DE2A1D93D3FC005E707E /* fileRead.cpp */,
-				05BBB8251D9623CF00FDD972 /* printPath.h */,
-				05BBB8261D9623EB00FDD972 /* printPath.cpp */,
+				05C126D71D97D409004E302C /* printPath.cpp */,
+				05C126D81D97D409004E302C /* printPath.h */,
 			);
 			path = SpellCheck;
 			sourceTree = "<group>";
@@ -139,7 +139,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				05BBB8271D9623EB00FDD972 /* printPath.cpp in Sources */,
+				05C126D91D97D409004E302C /* printPath.cpp in Sources */,
 				05D0A7421D924C8100E63881 /* main.cpp in Sources */,
 				05D0A74A1D924CAC00E63881 /* levenDis.cpp in Sources */,
 				05C9DE2B1D93D3FC005E707E /* fileRead.cpp in Sources */,

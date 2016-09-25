@@ -25,6 +25,7 @@ vector<string> dict;
 vector<string> storyCorrect;
 
 void writeDis();
+void multiConduct(bool disType);
 
 //edit distance of input and dict word
 unsigned int distances[STORY_SIZE];
@@ -41,13 +42,35 @@ int main(int argc, const char * argv[]) {
 //    cout << result << endl;
 
 
-    writeDis();
+//    writeDis();
+    
+//    multiConduct(true);   // multi beam search
+//    multiConduct(false);   // multi edit distance
+    
  
-//    printPath("himlays", "himalayas", filePath, "printPath.txt");
+//    printSinglePath("eleaphent", "elephant", filePath, "printPath.txt");
+    
+    
+    ofstream out(filePath + "name.txt");
+    print("helloyo", "helloyour", out);
     
     return 0;
 }
 
+void multiConduct(bool disType){
+    vector<string> temp = {"elephant", "elegant", "sycophant"};
+    map<string, int> resultMap;
+    map <string, int>::iterator resultIter;
+    
+    string str = "eleaphent";
+    
+    
+    multiLe(str, temp, resultMap, disType);
+    
+    for (resultIter = resultMap.begin(); resultIter != resultMap.end(); resultIter++) {
+        cout << resultIter->first << " " << resultIter->second << endl;
+    }
+}
 
 void writeDis(){
     
@@ -58,14 +81,16 @@ void writeDis(){
     readFile(filePath + pureStoryName, story);
     readFile(filePath + dictName, dict);
     readFile(filePath + pureStoryCorrectName, storyCorrect);
-    cout << story.at(1) << endl;
+//    cout << story.at(1) << endl;
     for (int i = 0; i < STORY_SIZE; i++) {
         //initialized to the biggest value of unsigned int
         distances[i] = UINT_MAX;
         //        cout << distances[i] << endl;
 
+        string s = story.at(i);
+        
         for (int j = 0; j < DICT_SIZE; j++) {
-            string s = story.at(i);
+            
             string d = dict.at(j);
 
 //            dis = levenshteinDis(s, d);         // edit distance
@@ -100,9 +125,9 @@ void writeDis(){
                 distances[i] = dis;
                 distanceId[i] = j;
             }
-            
-            
         }
+        
+        printSinglePath(s, dict.at(distanceId[i]), filePath, "printPath.txt");
     }
     
     ofstream storyResult(filePath + "storyResult.txt");
