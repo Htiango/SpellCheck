@@ -142,3 +142,161 @@ unsigned int resursiveLevenshtein(const std::string& s1, const std::string& s2)
 }
 
 
+
+// do levenshtein distance for multiple words at the same time
+// bool -> if true then do beam search, else do edit dis
+void multiLe (string& input, vector<string>& tem, map<string, int>& resultMap, bool disType){
+    unsigned int temNum = tem.size();
+    unsigned int inputLength = input.size();
+    
+    unsigned int wordLength;
+    unsigned int bestCost;
+    bool flag = false;
+    
+    vector<vector<unsigned int>> prevCol, col;
+    vector<unsigned int> temp_up, temp_down;
+    
+    
+    // count the longest length of the word in the vector and initialize the first column
+    for (unsigned int i = 0; i < temNum; i++) {
+        wordLength = tem.at(i).size();
+        
+        flag = false;
+        
+        vector<unsigned int> vecMax, vecPrev;
+        
+        for (unsigned int j = 0; j < wordLength + 1; j ++) {
+//            vector<vector<unsigned int>>::const_iterator iter = colMax.begin();
+//            colMax.insert(iter + i, )
+            
+            vecMax.push_back(UINT_MAX/2);
+            
+            if (disType) {
+                if (j > BEAM) {
+                    vecPrev.push_back(UINT_MAX/2);
+//                    prevCol[i][j] = colMax[i][j];
+                    if (!flag) {
+                        temp_up.push_back(j);
+                        flag = true;
+                    }
+                   
+//                    break;
+                }
+                else
+                    vecPrev.push_back(j);
+            }
+            else{
+                if (j > EDIT_DIS) {
+                    vecPrev.push_back(UINT_MAX/2);
+                    if (!flag) {
+                        temp_up.push_back(j);
+                        flag = true;
+                    }
+//                    break;
+                }
+                else
+                    vecPrev.push_back(j);
+            }
+        }
+//        colMax.push_back(vecMax);
+        prevCol.push_back(vecPrev);
+        col.push_back(vecMax);
+        temp_down.push_back(0);
+    }
+    
+    // do the beam search
+    if (disType) {
+        for (unsigned int i = 0; i < inputLength; i ++) {
+            
+            for (unsigned int j = 0; j < temNum; j++) {
+                wordLength = tem.at(j).size();
+
+                col[j][0] = prevCol[j][0] + 1;
+                bestCost = col[j][0];
+                for (unsigned int k = 0; k < wordLength ; k ++) {
+                    if (k < temp_up[j] + 1) {
+                        col[j][k + 1] = min({prevCol[j][1 + k] + 1, col[j][k] + 1, prevCol[j][k] + (input[i] == tem[j][k] ? 0 : 1)});
+                    }
+                    else{
+                        col[j][k + 1] = col[j][k] + 1;
+                    }
+                    
+                    if (col[j][k + 1] < bestCost) {
+                        bestCost = col[j][k + 1];
+                    }
+                    else if (col[j][k + 1] - bestCost > BEAM){
+                        temp_up[j] = k + 1;
+                        break;
+                    }
+
+                }
+                col[j].swap(prevCol[j]);
+            }
+//            col.swap(prevCol);
+        }
+    }
+    
+    // do the edit distance
+    else {
+        for (unsigned int i = 0; i < inputLength; i ++) {
+            
+            for (unsigned int j = 0; j < temNum; j++) {
+                wordLength = tem.at(j).size();
+                
+                if (temp_down[j] == 0 ) {
+                    col[j][0] = i + 1;
+                    if (col[j][0] > EDIT_DIS) {
+                        temp_down[j] = 1;
+                    }
+                }
+                else{
+                    temp_down[j] += 1;
+                    if (temp_down[j] > wordLength) {
+                        temp_down[j] = wordLength;
+                    }
+                }
+                
+                temp_up[j] += 1;
+                
+                if (temp_down[j] != 0) {
+                    col[j][temp_down[j]] = min({prevCol[j][temp_down[j]] + 1, prevCol[j][temp_down[j] - 1] + (input[i] == tem.at(j)[temp_down[j] - 1] ? 0 : 1)});
+                }
+                
+                unsigned int temp_value = temp_up[j] >= wordLength ? wordLength : temp_up[j] ;
+                
+                // the loop should only go to the middle part and forget about the upper and down part
+                for (unsigned int k = temp_down[j]; k < temp_value; k++) {
+                    col[j][k + 1] = min({ prevCol[j][1 + k] + 1, col[j][k] + 1, prevCol[j][k] + (input[i] == tem.at(j)[k] ? 0 : 1)});
+                    if (col[j][k + 1] > EDIT_DIS) {
+                        if (i > k) {
+                            temp_down[j] = k;
+                        }
+                        else{
+                            temp_up[j] = k;
+                            break;
+                        }
+                    }
+                }
+                col[j].swap(prevCol[j]);
+            }
+        }
+    }
+    
+    size_t tempId = 0;
+    unsigned int minDis = UINT_MAX;
+    unsigned int dis;
+    
+    for (unsigned int i = 0; i < temNum; i ++) {
+        wordLength = tem.at(i).size();
+        dis = prevCol[i][wordLength];
+        if (dis < minDis) {
+            tempId = i;
+            minDis = dis;
+        }
+    }
+    
+    resultMap.insert(pair<string, int>(tem.at(tempId), minDis));
+}
+
+
+
