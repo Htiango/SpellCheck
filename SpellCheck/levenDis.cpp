@@ -76,7 +76,7 @@ unsigned int beamLevenshtein(const string str_input, const string str_tem){
     
     unsigned int temp_up = len_tem - 1;
     
-    unsigned int bestCost;
+    int bestCost;
     
     // initialize the max column
     for (unsigned int i = 0; i < len_tem + 1; i++) {
@@ -117,8 +117,6 @@ unsigned int beamLevenshtein(const string str_input, const string str_tem){
         }
         col.swap(prevCol);
     }
-    
-    
     return prevCol[len_tem];
 }
 
@@ -150,7 +148,7 @@ void multiLe (string& input, vector<string>& tem, map<string, int>& resultMap, b
     unsigned int inputLength = input.size();
     
     unsigned int wordLength;
-    unsigned int bestCost;
+    int bestCost;
     bool flag = false;
     
     vector<vector<unsigned int>> prevCol, col;
@@ -299,4 +297,53 @@ void multiLe (string& input, vector<string>& tem, map<string, int>& resultMap, b
 }
 
 
-
+// use levenshtein distance to compare word strings, use beam search here
+unsigned int stringLevenshtein(vector<string>& input, vector<string>& tem){
+    const size_t len_input = input.size(), len_tem = tem.size();
+    vector<unsigned int > col(len_tem + 1), prevCol(len_tem + 1), colMax(len_tem + 1);
+    
+    unsigned int temp_up = len_tem - 1;
+    
+    int bestCost;
+    
+    // initialize the max column
+    for (unsigned int i = 0; i < len_tem + 1; i++) {
+        colMax[i] = UINT_MAX / 2;
+    }
+    
+    prevCol = colMax;    // initialize the first column
+    
+    // re-initialize the first column
+    for(unsigned int i = 0; i < len_tem + 1; i++)
+    {
+        if (i > BEAM){
+            temp_up = i;
+            break;
+        }
+        prevCol[i] = i;
+    }
+    
+    for(unsigned int i = 0; i < len_input ; i++){
+        col = colMax;
+        
+        col[0] = prevCol[0] + 1;
+        bestCost = col[0];
+        for (unsigned int j = 0; j < len_tem; j ++) {
+            if (j < temp_up + 1){
+                col[j + 1] = min({ prevCol[1 + j] + 1, col[j] + 1, prevCol[j] + (input[i] == tem[j] ? 0 : 1)});
+            }
+            else{
+                col[j + 1] = col[j] + 1;
+            }
+            if (col[j + 1] < bestCost) {
+                bestCost = col[j + 1];
+            }
+            else if (col[j + 1] - bestCost > BEAM){
+                temp_up = j + 1;
+                break;
+            }
+        }
+        col.swap(prevCol);
+    }
+    return prevCol[len_tem];
+}

@@ -16,7 +16,7 @@ unsigned int levenshteinDis(const string str_input, const string str_tem);   // 
 unsigned int beamLevenshtein(const string str_input, const string str_tem);   // pruning use the beam search
 unsigned int resursiveLevenshtein(const std::string& s1, const std::string& s2);   // brute force
 void multiLe (string& input, vector<string>& tem, map<string, int>& resultMap, bool disType); // multi pruning
-
+unsigned int stringLevenshtein(vector<string>& input, vector<string>& tem);
 
 #endif
 
