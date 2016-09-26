@@ -90,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SpellCheck/levenDis.cpp"
-            timestampString = "496481843.219907"
+            timestampString = "496563776.223265"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "163"
-            endingLineNumber = "163"
+            startingLineNumber = "161"
+            endingLineNumber = "161"
             landmarkName = "multiLe (string&amp; input, vector&lt;string&gt;&amp; tem, map&lt;string, int&gt;&amp; resultMap, bool disType)"
             landmarkType = "7">
          </BreakpointContent>
@@ -106,11 +106,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SpellCheck/levenDis.cpp"
-            timestampString = "496481843.219907"
+            timestampString = "496563776.223265"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "166"
-            endingLineNumber = "166"
+            startingLineNumber = "164"
+            endingLineNumber = "164"
             landmarkName = "multiLe (string&amp; input, vector&lt;string&gt;&amp; tem, map&lt;string, int&gt;&amp; resultMap, bool disType)"
             landmarkType = "7">
          </BreakpointContent>
@@ -122,11 +122,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SpellCheck/levenDis.cpp"
-            timestampString = "496483073.626451"
+            timestampString = "496563776.223265"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "233"
-            endingLineNumber = "233"
+            startingLineNumber = "231"
+            endingLineNumber = "231"
             landmarkName = "multiLe (string&amp; input, vector&lt;string&gt;&amp; tem, map&lt;string, int&gt;&amp; resultMap, bool disType)"
             landmarkType = "7">
          </BreakpointContent>
@@ -138,7 +138,23 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SpellCheck/levenDis.cpp"
-            timestampString = "496483073.626451"
+            timestampString = "496563776.223265"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "210"
+            endingLineNumber = "210"
+            landmarkName = "multiLe (string&amp; input, vector&lt;string&gt;&amp; tem, map&lt;string, int&gt;&amp; resultMap, bool disType)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SpellCheck/levenDis.cpp"
+            timestampString = "496563776.223265"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "212"
@@ -154,11 +170,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SpellCheck/levenDis.cpp"
-            timestampString = "496483073.626451"
+            timestampString = "496563776.223265"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "214"
-            endingLineNumber = "214"
+            startingLineNumber = "174"
+            endingLineNumber = "174"
             landmarkName = "multiLe (string&amp; input, vector&lt;string&gt;&amp; tem, map&lt;string, int&gt;&amp; resultMap, bool disType)"
             landmarkType = "7">
          </BreakpointContent>
@@ -170,11 +186,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SpellCheck/levenDis.cpp"
-            timestampString = "496481843.219907"
+            timestampString = "496563776.223265"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "176"
-            endingLineNumber = "176"
+            startingLineNumber = "200"
+            endingLineNumber = "200"
             landmarkName = "multiLe (string&amp; input, vector&lt;string&gt;&amp; tem, map&lt;string, int&gt;&amp; resultMap, bool disType)"
             landmarkType = "7">
          </BreakpointContent>
@@ -186,11 +202,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SpellCheck/levenDis.cpp"
-            timestampString = "496481843.219907"
+            timestampString = "496563776.223265"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "202"
-            endingLineNumber = "202"
+            startingLineNumber = "201"
+            endingLineNumber = "201"
             landmarkName = "multiLe (string&amp; input, vector&lt;string&gt;&amp; tem, map&lt;string, int&gt;&amp; resultMap, bool disType)"
             landmarkType = "7">
          </BreakpointContent>
@@ -202,11 +218,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SpellCheck/levenDis.cpp"
-            timestampString = "496483073.626451"
+            timestampString = "496563776.223265"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "203"
-            endingLineNumber = "203"
+            startingLineNumber = "288"
+            endingLineNumber = "288"
             landmarkName = "multiLe (string&amp; input, vector&lt;string&gt;&amp; tem, map&lt;string, int&gt;&amp; resultMap, bool disType)"
             landmarkType = "7">
          </BreakpointContent>
@@ -218,7 +234,55 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SpellCheck/levenDis.cpp"
-            timestampString = "496483073.626451"
+            timestampString = "496563776.223265"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "291"
+            endingLineNumber = "291"
+            landmarkName = "multiLe (string&amp; input, vector&lt;string&gt;&amp; tem, map&lt;string, int&gt;&amp; resultMap, bool disType)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SpellCheck/levenDis.cpp"
+            timestampString = "496563776.223265"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "292"
+            endingLineNumber = "292"
+            landmarkName = "multiLe (string&amp; input, vector&lt;string&gt;&amp; tem, map&lt;string, int&gt;&amp; resultMap, bool disType)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SpellCheck/levenDis.cpp"
+            timestampString = "496563776.223265"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "287"
+            endingLineNumber = "287"
+            landmarkName = "multiLe (string&amp; input, vector&lt;string&gt;&amp; tem, map&lt;string, int&gt;&amp; resultMap, bool disType)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SpellCheck/levenDis.cpp"
+            timestampString = "496563776.223265"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "290"
@@ -233,61 +297,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "SpellCheck/levenDis.cpp"
-            timestampString = "496483073.626451"
+            filePath = "SpellCheck/main.cpp"
+            timestampString = "496564860.195506"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "293"
-            endingLineNumber = "293"
-            landmarkName = "multiLe (string&amp; input, vector&lt;string&gt;&amp; tem, map&lt;string, int&gt;&amp; resultMap, bool disType)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SpellCheck/levenDis.cpp"
-            timestampString = "496483073.626451"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "294"
-            endingLineNumber = "294"
-            landmarkName = "multiLe (string&amp; input, vector&lt;string&gt;&amp; tem, map&lt;string, int&gt;&amp; resultMap, bool disType)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SpellCheck/levenDis.cpp"
-            timestampString = "496483073.626451"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "289"
-            endingLineNumber = "289"
-            landmarkName = "multiLe (string&amp; input, vector&lt;string&gt;&amp; tem, map&lt;string, int&gt;&amp; resultMap, bool disType)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SpellCheck/levenDis.cpp"
-            timestampString = "496483073.626451"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "292"
-            endingLineNumber = "292"
-            landmarkName = "multiLe (string&amp; input, vector&lt;string&gt;&amp; tem, map&lt;string, int&gt;&amp; resultMap, bool disType)"
+            startingLineNumber = "108"
+            endingLineNumber = "108"
+            landmarkName = "part2(vector&lt;string&gt;&amp; temp, string&amp; str, bool disType)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
