@@ -12,20 +12,24 @@
 
 using namespace std;
 
-string filePath = "/Users/hty/Desktop/Speech Recognition/project/project3/";
-string storyName = "story.txt";
-string pureStoryName = "pureStory.txt";
-string dictName = "dict.txt";
-string storyCorrectName = "storycorrect.txt";
-string pureStoryCorrectName = "pureStoryCorrect.txt";
+void filePreProcessing();
+void part3(bool disType);
+void part2(vector<string>& temp, string& str, bool disType);
+void part1(string& s1, string& s2, bool disType);
+void part4();
+
+const string filePath = "/Users/hty/Desktop/Speech Recognition/project/project3/";
+const string storyName = "story.txt";
+const string pureStoryName = "pureStory.txt";
+const string dictName = "dict.txt";
+const string storyCorrectName = "storycorrect.txt";
+const string pureStoryCorrectName = "pureStoryCorrect.txt";
 
 
 vector<string> story;
 vector<string> dict;
 vector<string> storyCorrect;
 
-void writeDis();
-void multiConduct(bool disType);
 
 //edit distance of input and dict word
 unsigned int distances[STORY_SIZE];
@@ -35,52 +39,106 @@ int distanceId[STORY_SIZE];
 
 int main(int argc, const char * argv[]) {
     
-
-//    convertFile((filePath + storyName), (filePath + pureStoryName));
-//    convertFile((filePath + storyCorrectName), (filePath + pureStoryCorrectName));
-//    unsigned int result = levenshteinDis("a", "are");
-//    cout << result << endl;
-
-
-//    writeDis();
-    
 //    multiConduct(true);   // multi beam search
 //    multiConduct(false);   // multi edit distance
-    
+    readFile(filePath + pureStoryName , story);
+    readFile(filePath + pureStoryCorrectName, storyCorrect);
+    readFile(filePath + dictName, dict);
+
  
-//    printSinglePath("eleaphent", "elephant", filePath, "printPath.txt");
+    cout << "-------------------------------PART1----------------------------------" << endl;
+    cout << "HERE IS PART1!" << endl;
+    string s1 = "helloyo";
+    string s2 = "helloyour";
+    part1(s1, s2, true);
+    
+    cout << "-------------------------------PART2----------------------------------" << endl;
+    cout << "HERE IS PART2!" << endl;
+    vector<string> temp = {"elephant", "elegant", "sycophant"};
+    string str = "eleaphent";
+    part2(temp, str, true);
+    
+    cout << "-------------------------------PART3----------------------------------" << endl;
+    cout << "HERE IS PART3!" << endl;
+    part3(true);
+    
+    cout << "-------------------------------PART4----------------------------------" << endl;
+    cout << "HERE IS PART4!" << endl;
+    part4();
     
     
-    ofstream out(filePath + "name.txt");
-    print("helloyo", "helloyour", out);
+//    ofstream out(filePath + "name.txt");
+//    print("helloyo", "helloyour", out);
     
     return 0;
 }
 
-void multiConduct(bool disType){
-    vector<string> temp = {"elephant", "elegant", "sycophant"};
+
+// remove all punctuation markers
+void filePreProcessing(){
+    convertFile((filePath + storyName), (filePath + pureStoryName));
+    convertFile((filePath + storyCorrectName), (filePath + pureStoryCorrectName));
+}
+
+
+// compute the Levenshtein distance between two symbol strings and Display the trellis, the scores and the best path in table format
+// bool -> if true then do beam search, else do edit dis
+void part1(string& s1, string& s2, bool disType){
+    unsigned int result;
+    if (disType) {
+        result = beamLevenshtein(s1, s2);
+    }
+    else
+        result = levenshteinDis(s1, s2);
+    cout << "The best score is " << result << endl;
+    cout << "Now let's display the trellis, the scores and the best path(with *)."<< endl;
+    
+    ofstream out(filePath + "printPath.txt");
+    print(s1, s2, out);
+    cout << endl;
+    out.close();
+}
+
+
+// do the multiple words' levenshtein distance simultaneously
+void part2(vector<string>& temp, string& str, bool disType){
     map<string, int> resultMap;
     map <string, int>::iterator resultIter;
-    
-    string str = "eleaphent";
+    vector<string> strStore(temp.size());
     
     
     multiLe(str, temp, resultMap, disType);
     
+    int i = 0;
     for (resultIter = resultMap.begin(); resultIter != resultMap.end(); resultIter++) {
-        cout << resultIter->first << " " << resultIter->second << endl;
+        cout << "The best fit template is '" << resultIter->first << "' with a best score " << resultIter->second << endl;
+        cout << endl;
+        strStore[i] = resultIter->first;
+        i++;
     }
+    
+    int j = 0;
+    ofstream out(filePath + "printPath.txt");
+    for (int k = 0; k < temp.size(); k++) {
+        cout << "Template " << k << endl;
+        if (temp[k] != strStore[j]) {
+            printSinglePath(str, temp[k], filePath, "path.txt");
+        }
+        else{
+            print(str, temp[k], out);
+            j++;
+        }
+        cout << endl;
+    }
+    out.close();
 }
 
-void writeDis(){
+// write and show the best road of levenshtein distance
+void part3(bool disType){
     
     unsigned int dis;
     int wordDis, wordDisPre ;
     string dPre;
-    
-    readFile(filePath + pureStoryName, story);
-    readFile(filePath + dictName, dict);
-    readFile(filePath + pureStoryCorrectName, storyCorrect);
 //    cout << story.at(1) << endl;
     for (int i = 0; i < STORY_SIZE; i++) {
         //initialized to the biggest value of unsigned int
@@ -92,10 +150,13 @@ void writeDis(){
         for (int j = 0; j < DICT_SIZE; j++) {
             
             string d = dict.at(j);
-
-//            dis = levenshteinDis(s, d);         // edit distance
 //            dis = resursiveLevenshtein(s, d);   // brute force
-            dis = beamLevenshtein(s, d);        // beam search
+            
+            if (disType) {
+                dis = beamLevenshtein(s, d);        // beam search
+            }
+            else
+                dis = levenshteinDis(s, d);         // edit distance
             
             if (distances[i] == dis) {
                 wordDis = abs(int(s.size()) - int(d.size()));
@@ -128,6 +189,7 @@ void writeDis(){
         }
         
         printSinglePath(s, dict.at(distanceId[i]), filePath, "printPath.txt");
+        cout << endl;
     }
     
     ofstream storyResult(filePath + "storyResult.txt");
@@ -143,18 +205,37 @@ void writeDis(){
     
     //correct word after edit distance
     int correctCount = 0;
+    int levenshteinScore = 0;
     for (int i = 0; i < STORY_SIZE; i++) {
+        if (disType) {
+            levenshteinScore = beamLevenshtein(dict.at(distanceId[i]), storyCorrect.at(i));
+        }
+        else
+            levenshteinScore =levenshteinDis(dict.at(distanceId[i]), storyCorrect.at(i));
+        
         storyResult << story.at(i) << " "
         << dict.at(distanceId[i]) << " "
         << distances[i] << "\n";
         //edit distance of alignment word and correct word
         storyResultWithCorrect << dict.at(distanceId[i]) << " "
         << storyCorrect.at(i) << " "
-        << levenshteinDis(dict.at(distanceId[i]), storyCorrect.at(i)) << "\n";
+        << levenshteinScore << "\n";
         //calculate number of correct word after edit distance
         if (dict.at(distanceId[i]) == storyCorrect.at(i))
             correctCount++;
     }
     cout << "correct rate : " << (double)correctCount / STORY_SIZE << endl;
     storyResult.close();
+}
+
+
+void part4(){
+    unsigned int result = stringLevenshtein(story, storyCorrect);
+    cout << result << endl;
+    ofstream out(filePath + "test.txt");
+    //0: substitution 1: insertion 2: deletion
+    int errorRecord[3] = {0, 0, 0};
+    printString(story, storyCorrect, out, errorRecord);
+    cout << errorRecord[0] << " " << errorRecord[1] << " " << errorRecord[2] << endl;
+    
 }
