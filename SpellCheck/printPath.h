@@ -11,7 +11,7 @@
 using namespace std;
 
 //gap between characters when print path table
-#define TABLE_GAP (5)
+#define TABLE_GAP (8)
 
 void printSinglePath(const string& s1, const string& s2, string filePath, string fileName);
 void print(string s1, string s2, ofstream& out);

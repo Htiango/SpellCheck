@@ -17,6 +17,8 @@ void part3(bool disType);
 void part2(vector<string>& temp, string& str, bool disType);
 void part1(string& s1, string& s2, bool disType);
 void part4();
+void part5();
+void part6();
 
 const string filePath = "/Users/hty/Desktop/Speech Recognition/project/project3/";
 const string storyName = "story.txt";
@@ -24,11 +26,13 @@ const string pureStoryName = "pureStory.txt";
 const string dictName = "dict.txt";
 const string storyCorrectName = "storycorrect.txt";
 const string pureStoryCorrectName = "pureStoryCorrect.txt";
+const string spellChecker = "storyMatch.txt";
 
 
 vector<string> story;
 vector<string> dict;
 vector<string> storyCorrect;
+vector<string> storyMatch;
 
 
 //edit distance of input and dict word
@@ -44,31 +48,58 @@ int main(int argc, const char * argv[]) {
     readFile(filePath + pureStoryName , story);
     readFile(filePath + pureStoryCorrectName, storyCorrect);
     readFile(filePath + dictName, dict);
+    readFile(filePath + spellChecker, storyMatch);
 
+    cout << "Press any button to continue!" << endl;
+    int chartemp = cin.get();
  
     cout << "-------------------------------PART1----------------------------------" << endl;
     cout << "HERE IS PART1!" << endl;
     string s1 = "helloyo";
     string s2 = "helloyour";
-    part1(s1, s2, true);
+    part1(s1, s2, false);
+
+    cout << "Press any button to continue!" << endl;
+    chartemp = cin.get();
+    
     
     cout << "-------------------------------PART2----------------------------------" << endl;
     cout << "HERE IS PART2!" << endl;
     vector<string> temp = {"elephant", "elegant", "sycophant"};
     string str = "eleaphent";
     part2(temp, str, true);
+
+    cout << "Press any button to continue!" << endl;
+    chartemp = cin.get();
+    
     
     cout << "-------------------------------PART3----------------------------------" << endl;
     cout << "HERE IS PART3!" << endl;
     part3(true);
     
+    cout << "Press any button to continue!" << endl;
+    chartemp = cin.get();
+//
     cout << "-------------------------------PART4----------------------------------" << endl;
     cout << "HERE IS PART4!" << endl;
     part4();
     
+    cout << "Press any button to continue!" << endl;
+    chartemp = cin.get();
     
-//    ofstream out(filePath + "name.txt");
-//    print("helloyo", "helloyour", out);
+    cout << "-------------------------------PART5----------------------------------" << endl;
+    cout << "HERE IS PART5!" << endl;
+    part5();
+
+    cout << "Press any button to continue!" << endl;
+    chartemp = cin.get();
+    
+    cout << "-------------------------------PART6----------------------------------" << endl;
+    cout << "HERE IS PART6!" << endl;
+    part6();
+    
+    cout << "Press any button to continue!" << endl;
+    chartemp = cin.get();
     
     return 0;
 }
@@ -194,12 +225,17 @@ void part3(bool disType){
     
     ofstream storyResult(filePath + "storyResult.txt");
     ofstream storyResultWithCorrect(filePath + "storyResultWithCorrect.txt");
+    ofstream storyMatch(filePath + spellChecker);
     if (!storyResult.is_open()) {
         cout << "fail to open storyResult" << endl;
         exit(1);
     }
     if (!storyResultWithCorrect.is_open()) {
         cout << "fail to open storyResultWithCorrect" << endl;
+        exit(1);
+    }
+    if (!storyMatch.is_open()) {
+        cout << "fail to open storyMatch" << endl;
         exit(1);
     }
     
@@ -212,7 +248,7 @@ void part3(bool disType){
         }
         else
             levenshteinScore =levenshteinDis(dict.at(distanceId[i]), storyCorrect.at(i));
-        
+        storyMatch << dict.at(distanceId[i]) << "\n";
         storyResult << story.at(i) << " "
         << dict.at(distanceId[i]) << " "
         << distances[i] << "\n";
@@ -230,12 +266,45 @@ void part3(bool disType){
 
 
 void part4(){
+    
     unsigned int result = stringLevenshtein(story, storyCorrect);
     cout << result << endl;
-    ofstream out(filePath + "test.txt");
+    ofstream out(filePath + "editDisStoryWithCorrect.txt");
     //0: substitution 1: insertion 2: deletion
     int errorRecord[3] = {0, 0, 0};
     printString(story, storyCorrect, out, errorRecord);
-    cout << errorRecord[0] << " " << errorRecord[1] << " " << errorRecord[2] << endl;
-    
+    cout << "Substitution: " <<errorRecord[0] << "  Insertion: " << errorRecord[1] << "   Deletion: " << errorRecord[2] << endl;
 }
+
+
+void part5(){
+    
+    unsigned int result = stringLevenshtein(storyMatch, storyCorrect);
+    cout << result << endl;
+    ofstream out(filePath + "editDisMatchWithCorrect.txt");
+    //0: substitution 1: insertion 2: deletion
+    int errorRecord[3] = {0, 0, 0};
+    printString(storyMatch, storyCorrect, out, errorRecord);
+    cout << "Substitution: " <<errorRecord[0] << "  Insertion: " << errorRecord[1] << "   Deletion: " << errorRecord[2] << endl;
+}
+
+
+void part6(){
+    vector<string> story1, story2;
+    story1.push_back("you");
+    story1.push_back("are");
+    story1.push_back("a");
+    story1.push_back("great");
+    story1.push_back("guy");
+    story2.push_back("their");
+    story2.push_back("are");
+    story2.push_back("some");
+    story2.push_back("really");
+    story2.push_back("great");
+    story2.push_back("people");
+    ofstream out(filePath + "stringExample.txt");
+    int errorRecord[3] = {0, 0, 0};
+    printString(story1, story2, out, errorRecord);
+    cout << "Substitution: " <<errorRecord[0] << "  Insertion: " << errorRecord[1] << "   Deletion: " << errorRecord[2] << endl;
+}
+
